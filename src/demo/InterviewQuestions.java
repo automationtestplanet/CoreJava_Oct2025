@@ -195,16 +195,14 @@ public class InterviewQuestions {
 	
 	//Write a program to extract numbers from given string and perform the sum
 	//  AHS12@&3avnv&4HD5   -> 12345 -> 1+2+3+4+5  = 15
-	public static void extractNumbersFromStringAndPerfromSum2(String str) {
-		String numbersStr = str.replaceAll("[^0-9]", "");
+	public static void extractNumbersFromStringAndPerfromSum2(String str) {		
 		int sum = 0;
-		for(char eachChar : str.replaceAll("[^0-9]", "").toCharArray()){
-			sum = sum + (eachChar - '0');
+		for(char eachChar : str.replaceAll("[^0-9]", "").toCharArray()){   // 12345  1,2,3,4,5 -> 49+50+51+52+53 = 255
+			sum = sum + (eachChar-'0');
 		}
 		System.out.println(str+" :  Numbers sum: "+sum);		
 	}
 	
-
 	public static void main(String[] args) {
 //		swapNumbersUsing3rdVariable(10,20);
 //		swapNumbersWithoutUsing3rdVariable(10, 20);
@@ -220,6 +218,9 @@ public class InterviewQuestions {
 //		checkStringPalindrome("malayalam");
 		extractNumbersFromStringAndPerfromSum("AHS12@&3avnv&4HD5");
 		extractNumbersFromStringAndPerfromSum("AHS12@&3avnv&4HD5jshd6jah7");
+		
+		extractNumbersFromStringAndPerfromSum2("AHS12@&3avnv&4HD5");
+		extractNumbersFromStringAndPerfromSum2("AHS12@&3avnv&4HD5jshd6jah7");
 	}
 
 }
