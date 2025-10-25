@@ -193,6 +193,16 @@ public class InterviewQuestions {
 		System.out.println(str+" :  Numbers sum: "+sum);		
 	}
 	
+	//Write a program to extract numbers from given string and perform the sum
+	//  AHS12@&3avnv&4HD5   -> 12345 -> 1+2+3+4+5  = 15
+	public static void extractNumbersFromStringAndPerfromSum2(String str) {
+		String numbersStr = str.replaceAll("[^0-9]", "");
+		int sum = 0;
+		for(char eachChar : str.replaceAll("[^0-9]", "").toCharArray()){
+			sum = sum + (eachChar - '0');
+		}
+		System.out.println(str+" :  Numbers sum: "+sum);		
+	}
 	
 
 	public static void main(String[] args) {
