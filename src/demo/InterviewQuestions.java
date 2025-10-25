@@ -22,7 +22,7 @@ public class InterviewQuestions {
 		System.out.println("Before swaping the varibles");
 		System.out.println("A= " + a);
 		System.out.println("B= " + b);
-
+		
 		a = a + b; // a=30
 		b = a - b; // b=10
 		a = a - b; // a=20
