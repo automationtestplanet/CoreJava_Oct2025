@@ -178,6 +178,22 @@ public class InterviewQuestions {
 		else
 			System.out.println(str + " is not a Palindrome");
 	}
+	
+	//Write a program to extract numbers from given string and perform the sum
+	//  AHS12@&3avnv&4HD5   -> 12345 -> 1+2+3+4+5  = 15
+	public static void extractNumbersFromStringAndPerfromSum(String str) {
+		String numbersStr = str.replaceAll("[^0-9]", "");
+		int number = Integer.parseInt(numbersStr);
+		int sum = 0;
+		
+		while(number>0) {
+			sum = sum + number%10;
+			number = number/10;
+		}		
+		System.out.println(str+" :  Numbers sum: "+sum);		
+	}
+	
+	
 
 	public static void main(String[] args) {
 //		swapNumbersUsing3rdVariable(10,20);
@@ -192,6 +208,8 @@ public class InterviewQuestions {
 //		checkNumberPalindrome(123); // 123->321, 121->121 - Palindrome, 101
 //		revereString3("Hello");		
 //		checkStringPalindrome("malayalam");
+		extractNumbersFromStringAndPerfromSum("AHS12@&3avnv&4HD5");
+		extractNumbersFromStringAndPerfromSum("AHS12@&3avnv&4HD5jshd6jah7");
 	}
 
 }
