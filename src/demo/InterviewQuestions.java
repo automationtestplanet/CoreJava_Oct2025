@@ -1,5 +1,7 @@
 package demo;
 
+import java.util.Arrays;
+
 public class InterviewQuestions {
 
 	// swap numbers using third variable
@@ -203,6 +205,23 @@ public class InterviewQuestions {
 		System.out.println(str+" :  Numbers sum: "+sum);		
 	}
 	
+	public static String sortString(String str) {
+		char[] charArray = str.toCharArray();
+		Arrays.sort(charArray);
+		return new String(charArray);
+	}
+
+	// Write a program to check whether the given strings are anagrams
+	// Ex: listen <-> silent, demo <-> mode, java <-> python
+	public static void checkAnagrams(String str1, String str2) {  
+		// demo and mode  -> demo demo, java and  python -> aajv hnopty, listen silent -> eilnst  eilnst
+		if (sortString(str1).equals(sortString(str2))) {
+			System.out.println(str1 + " and " + str2 + " are Anagrams");
+		} else {
+			System.out.println(str1 + " and " + str2 + " are not Anagrams");
+		}
+	}
+	
 	public static void main(String[] args) {
 //		swapNumbersUsing3rdVariable(10,20);
 //		swapNumbersWithoutUsing3rdVariable(10, 20);
@@ -221,6 +240,10 @@ public class InterviewQuestions {
 		
 		extractNumbersFromStringAndPerfromSum2("AHS12@&3avnv&4HD5");
 		extractNumbersFromStringAndPerfromSum2("AHS12@&3avnv&4HD5jshd6jah7");
+		
+		checkAnagrams("listen", "silent");
+		checkAnagrams("demo", "mode");
+		checkAnagrams("java", "python");
 	}
 
 }
