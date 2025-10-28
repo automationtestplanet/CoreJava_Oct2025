@@ -6,10 +6,21 @@ public class Assignment1 {
 	//Ex; 5 -> 5*5 = 25 is automorphic
 	// ex: 4 -> 4*4 = 16 not auomorphic
 	// ex: 6 -> 6*6 = 36 automorphic
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	static boolean isAutomorphic(int num) {
+		int square = num*num;
+		String numString = String.valueOf(num);
+		String sqrString = String.valueOf(square);
+		return sqrString.endsWith(numString);
 
+	}
+	public static void main(String[] args) {
+		int num=5;
+		if(isAutomorphic(num)) {
+			System.out.println(num+" is a autpmorphic number");
+		}
+		else {
+			System.out.println(num+" is not a autpmorphic number");
+		}
 	}
 
 }
