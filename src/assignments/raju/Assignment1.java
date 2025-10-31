@@ -14,5 +14,7 @@ public class Assignment1 {
 
 	public static void main(String[] args) {
 		printFactorialValueOfGivenNumber(25);
+		printFactorialValueOfGivenNumber(30);
+		printFactorialValueOfGivenNumber(40);
 	}
 }
