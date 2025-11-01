@@ -18,7 +18,7 @@ public class Assignment1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Assignment fb= new Assignment();
+		Assignment1 fb= new Assignment1();
 		fb.fibonacci(5);
 
 	}
