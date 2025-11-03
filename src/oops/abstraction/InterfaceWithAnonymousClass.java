@@ -1,6 +1,6 @@
 package oops.abstraction;
 
-public interface Interface1 {
+public interface InterfaceWithAnonymousClass {
 
 	int A = 100; // public static final
 
@@ -25,4 +25,21 @@ public interface Interface1 {
 	 * @return Integer value
 	 */
 	int subtraction(int a, int b);
+
+	public static void main(String[] args) {
+		InterfaceWithAnonymousClass inf1 = new InterfaceWithAnonymousClass() {
+			@Override
+			public int addition(int a, int b) {
+				return a + b;
+			}
+
+			@Override
+			public int subtraction(int a, int b) {
+				return a - b;
+			}
+		};
+		
+		System.out.println(inf1.addition(10, 20));
+		System.out.println(inf1.subtraction(10, 20));
+	}
 }
