@@ -1,6 +1,10 @@
 package demo;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class InterviewQuestions {
 
@@ -24,7 +28,7 @@ public class InterviewQuestions {
 		System.out.println("Before swaping the varibles");
 		System.out.println("A= " + a);
 		System.out.println("B= " + b);
-		
+
 		a = a + b; // a=30
 		b = a - b; // b=10
 		a = a - b; // a=20
@@ -180,31 +184,31 @@ public class InterviewQuestions {
 		else
 			System.out.println(str + " is not a Palindrome");
 	}
-	
-	//Write a program to extract numbers from given string and perform the sum
-	//  AHS12@&3avnv&4HD5   -> 12345 -> 1+2+3+4+5  = 15
+
+	// Write a program to extract numbers from given string and perform the sum
+	// AHS12@&3avnv&4HD5 -> 12345 -> 1+2+3+4+5 = 15
 	public static void extractNumbersFromStringAndPerfromSum(String str) {
 		String numbersStr = str.replaceAll("[^0-9]", "");
 		int number = Integer.parseInt(numbersStr);
 		int sum = 0;
-		
-		while(number>0) {
-			sum = sum + number%10;
-			number = number/10;
-		}		
-		System.out.println(str+" :  Numbers sum: "+sum);		
-	}
-	
-	//Write a program to extract numbers from given string and perform the sum
-	//  AHS12@&3avnv&4HD5   -> 12345 -> 1+2+3+4+5  = 15
-	public static void extractNumbersFromStringAndPerfromSum2(String str) {		
-		int sum = 0;
-		for(char eachChar : str.replaceAll("[^0-9]", "").toCharArray()){   // 12345  1,2,3,4,5 -> 49+50+51+52+53 = 255
-			sum = sum + (eachChar-'0');
+
+		while (number > 0) {
+			sum = sum + number % 10;
+			number = number / 10;
 		}
-		System.out.println(str+" :  Numbers sum: "+sum);		
+		System.out.println(str + " :  Numbers sum: " + sum);
 	}
-	
+
+	// Write a program to extract numbers from given string and perform the sum
+	// AHS12@&3avnv&4HD5 -> 12345 -> 1+2+3+4+5 = 15
+	public static void extractNumbersFromStringAndPerfromSum2(String str) {
+		int sum = 0;
+		for (char eachChar : str.replaceAll("[^0-9]", "").toCharArray()) { // 12345 1,2,3,4,5 -> 49+50+51+52+53 = 255
+			sum = sum + (eachChar - '0');
+		}
+		System.out.println(str + " :  Numbers sum: " + sum);
+	}
+
 	public static String sortString(String str) {
 		char[] charArray = str.toCharArray();
 		Arrays.sort(charArray);
@@ -213,15 +217,49 @@ public class InterviewQuestions {
 
 	// Write a program to check whether the given strings are anagrams
 	// Ex: listen <-> silent, demo <-> mode, java <-> python
-	public static void checkAnagrams(String str1, String str2) {  
-		// demo and mode  -> demo demo, java and  python -> aajv hnopty, listen silent -> eilnst  eilnst
+	public static void checkAnagrams(String str1, String str2) {
+		// demo and mode -> demo demo, java and python -> aajv hnopty, listen silent ->
+		// eilnst eilnst
 		if (sortString(str1).equals(sortString(str2))) {
 			System.out.println(str1 + " and " + str2 + " are Anagrams");
 		} else {
 			System.out.println(str1 + " and " + str2 + " are not Anagrams");
 		}
 	}
-	
+
+	// Write a program to print each character occurrence in a given string
+	// ex: "hello this is java" -> h-2, e-1, l-2, o-1, t-1, i-2, s-2, j-1, a-2, v-1
+	public static void printEcahCharccaterCountInAString(String str) {
+
+		String str1 = str;
+
+		while (str1.length() > 0) {
+			char firstChar = str1.charAt(0);
+			int count = 0;
+			for (char eachChar : str1.toCharArray()) {
+				if (eachChar == firstChar)
+					count++;
+			}
+			System.out.print(firstChar + "-" + count + ", ");
+			str1 = str1.replaceAll(String.valueOf(firstChar), "");
+		}
+		System.out.println("");
+
+		Map<Character, Integer> charsMap = new LinkedHashMap<Character, Integer>();
+		for (char eachChar : str.toCharArray()) {
+			if (charsMap.containsKey(eachChar))
+				charsMap.put(eachChar, charsMap.get(eachChar) + 1);
+			else
+				charsMap.put(eachChar, 1);
+		}
+		System.out.println(charsMap);
+
+		var result = str.chars().mapToObj(eachChar -> (char) eachChar)
+				.collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new ,Collectors.counting()));
+		System.out.println(result);
+
+	}
+
 	public static void main(String[] args) {
 //		swapNumbersUsing3rdVariable(10,20);
 //		swapNumbersWithoutUsing3rdVariable(10, 20);
@@ -235,15 +273,17 @@ public class InterviewQuestions {
 //		checkNumberPalindrome(123); // 123->321, 121->121 - Palindrome, 101
 //		revereString3("Hello");		
 //		checkStringPalindrome("malayalam");
-		extractNumbersFromStringAndPerfromSum("AHS12@&3avnv&4HD5");
-		extractNumbersFromStringAndPerfromSum("AHS12@&3avnv&4HD5jshd6jah7");
-		
-		extractNumbersFromStringAndPerfromSum2("AHS12@&3avnv&4HD5");
-		extractNumbersFromStringAndPerfromSum2("AHS12@&3avnv&4HD5jshd6jah7");
-		
-		checkAnagrams("listen", "silent");
-		checkAnagrams("demo", "mode");
-		checkAnagrams("java", "python");
+//		extractNumbersFromStringAndPerfromSum("AHS12@&3avnv&4HD5");
+//		extractNumbersFromStringAndPerfromSum("AHS12@&3avnv&4HD5jshd6jah7");
+//		
+//		extractNumbersFromStringAndPerfromSum2("AHS12@&3avnv&4HD5");
+//		extractNumbersFromStringAndPerfromSum2("AHS12@&3avnv&4HD5jshd6jah7");
+//		
+//		checkAnagrams("listen", "silent");
+//		checkAnagrams("demo", "mode");
+//		checkAnagrams("java", "python");
+
+		printEcahCharccaterCountInAString("hello this is java");
 	}
 
 }
